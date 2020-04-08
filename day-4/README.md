@@ -13,6 +13,8 @@
 - Файл `validation.php`
 - Файл `hw4.php`
 
+## :tv: [Запись онлайн-занятия](https://zoom.us/rec/share/-OdtP6r-6XJIGdbf52yDSPY-P4X8eaa8higb_KFfxB6jsceoqTzz0tOSGJBSe3lP?startTime=1584622543000)
+
 ## :scroll: Конспект
 
 ### Подключение дополнительных файлов в текущий скрипт
