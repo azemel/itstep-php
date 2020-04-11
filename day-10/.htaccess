@@ -1,0 +1,7 @@
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !/assets
+RewriteCond %{REQUEST_URI} !/content
+RewriteRule ^ index.php [L,PT,QSA]
+
+ErrorDocument 404 /404.php
+ErrorDocument 500 /500.php
