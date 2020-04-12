@@ -1,0 +1,1 @@
+<h2>The main page of the site</h2>

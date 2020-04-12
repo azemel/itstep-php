@@ -42,15 +42,32 @@ class App {
     $context->route = $route;
     $request->mergeParams();
 
-    $this->invokeAction($context);
-  }
+    // Не лучшее место для доавляения этих функций, но пока так
+    $context->urlToRoute = function ($name, $params = []) {
+      $url = $this->router->urlToRoute($name, $params);
+      if ($this->env->uriRoot) {
+        $url = "/" . $this->env->uriRoot . $url;
+      }
+      return $url;
+    };
 
-  public function invokeAction(Context $context) {
-    $controller = "pd\\controllers\\" . $context->route->controller . "Controller";
-    $controller = new $controller();
+    $context->urlToAsset = function ($name) {
+      $url = "/assets/$name";
+      if ($this->env->uriRoot) {
+        $url = "/" . $this->env->uriRoot . $url;
+      }
+      return $url;
+    };
 
-    $action = $context->route->action;
-    $controller->$action($context->request);
+
+    $injection = new Injection($context);
+    $response = $injection->invokeRouteAction($route);
+
+    if (!$response) {
+      return;
+    }
+
+    $response->send($context);
   }
 
   public function handleError(int $errno , string $errst, string $errfile, int $errline, array $errcontext) {

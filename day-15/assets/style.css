@@ -1,0 +1,124 @@
+body, html {
+  margin: 0;
+  padding: 0;
+
+}
+
+body {
+  padding: 40px;
+  font: 14px sans-serif;
+}
+
+a {
+  color: black;
+}
+
+
+
+.block {
+  background-color: white;
+  margin: 20px auto;
+}
+
+.block__header {
+  padding: 20px;
+}
+
+.navigation {
+  background-color: #eee;
+  padding: 10px;
+  text-align: center;
+}
+
+.navigation__item {
+  padding: 10px;
+  color: black;
+}
+
+.navigation__item_active {
+  color: green;
+}
+
+
+.books {
+  display: table;
+}
+
+.books__book {
+  padding: 10px;
+  color: black;
+}
+
+
+.book {
+  width: 600px;
+  display: flex;
+}
+
+.book__cover {
+  min-width: 210px;
+  min-height: 297px;
+}
+
+.book__cover_placeholder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: hsl(50, 100%, 96%);
+}
+
+.book__title {
+  padding: 20px;
+}
+
+.book__author {
+  padding: 10px 20px;
+}
+
+.book__isbn {
+  padding: 10px 20px;
+}
+
+
+input, button {
+  font: inherit;
+}
+
+
+.form {
+  width: 600px;
+  /* padding: 10px 0; */
+}
+
+.form__field {
+  padding: 10px 20px;
+}
+
+.form__field_is-invalid {
+  background-color: hsl(0, 75%, 96%);
+  padding: 20px;
+  margin: 10px 0;
+}
+
+.form__label {
+  display: block;
+  padding-bottom: 4px;
+}
+
+.form__error {
+  color: hsl(0, 80%, 50%);
+  padding-top: 4px;
+}
+
+.textbox {
+  display: block;
+  width: 100%;
+  padding: 4px;
+}
+
+.button {
+  display: block;
+  margin: 0 auto;
+  padding: 8px 16px;
+}

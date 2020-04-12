@@ -55,6 +55,10 @@ class Injection {
         $values[$name] = $request->query;
       } else if ($name === "files") {
         $values[$name] = $request->files;
+      } else if ($name === "cookies") {
+        $values[$name] = $request->cookies;
+      } else if ($name === "session") {
+        $values[$name] = $request->session;
       } else if ($arg->getClass() !== null) {
         $className = $arg->getType()->getName();
         $model = new $className();

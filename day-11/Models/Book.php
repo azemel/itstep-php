@@ -12,6 +12,10 @@ class Book {
 
   public $isbn;
 
+  public $year;
+
+  public $cover;
+
   function __construct() {
     
   }

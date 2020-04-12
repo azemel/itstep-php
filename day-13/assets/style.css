@@ -1,0 +1,69 @@
+body, html {
+  margin: 0;
+  padding: 0;
+
+}
+
+body {
+  padding: 40px;
+  font: 14px sans-serif;
+}
+
+a {
+  color: black;
+}
+
+.navigation {
+  background-color: #eee;
+  padding: 10px;
+}
+
+.navigation__item {
+  padding: 10px;
+  color: black;
+}
+
+.navigation__item_active {
+  color: green;
+}
+
+.books {
+  padding: 10px;
+}
+
+.books__book {
+  padding: 10px;
+  color: black;
+}
+
+
+.book {
+  margin-top: 10px;
+  width: 600px;
+  display: flex;
+}
+
+.book__cover {
+  min-width: 210px;
+  min-height: 297px;
+}
+
+.book__cover_placeholder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: hsl(50, 100%, 96%);
+}
+
+.book__title {
+  padding: 20px;
+}
+
+.book__author {
+  padding: 10px 20px;
+}
+
+.book__isbn {
+  padding: 10px 20px;
+}

@@ -2,6 +2,8 @@
 
 namespace pd\core;
 
+use pd\middleware\Validation;
+
 require_once("autoload.php");
 
 $env = new Environment([
@@ -25,12 +27,13 @@ $router->get("books", "/books", "Books", "list");
 $router->get("book.new", "/books/new", "Books", "create");
 $router->post("book.new.save", "/books/new", "Books", "save");
 
-// Почему этот маршрут идет после book.new и что будет если их поменять местами?
 $router->get("book", "/books/{book.id}", "Books", "find");
 
 $router->get("book.editor", "/books/{book.id}/edit", "Books", "edit");
 $router->post("book.editor.save", "/books/{book.id}/edit", "Books", "save");
 
 $app->useRouter($router);
+
+$app->useMiddleware(new Validation());
 
 $app->run();

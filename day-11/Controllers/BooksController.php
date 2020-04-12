@@ -3,6 +3,7 @@
 namespace pd\controllers;
 
 use pd\core\Request;
+use pd\models\Book;
 
 class BooksController {
 
@@ -10,23 +11,25 @@ class BooksController {
     echo "BOOKS";
   }
 
-  public function find(Request $request) {
+  public function find(int $book_id) {
     echo "BOOK";
-    var_dump($request);
+    var_dump($book_id);
   }
 
   public function create() {
     echo "NEW BOOK";
   }
 
-  public function edit(Request $request) {
+  public function edit(int $book_id) {
     echo "BOOK EDITOR";
-    var_dump($request);
+    var_dump($book_id);
   }
 
-  public function save(Request $request) {
+  public function save(Book $book, $files) {
     echo "SAVING THE BOOK";
-    var_dump($request);
+    var_dump($book);
+    var_dump($files);
+
   }
 
 }

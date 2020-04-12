@@ -10,6 +10,7 @@ class App {
 
   public $env;
   public $router;
+  public $middleware = [];
 
   public function __construct(Environment $env) {
 
@@ -24,6 +25,11 @@ class App {
 
   public function useRouter(Router $router) {
     $this->router = $router;
+  }
+
+  
+  public function useMiddleware($middleware) {
+    array_unshift($this->middleware, $middleware);
   }
 
   public function run() {
@@ -42,15 +48,49 @@ class App {
     $context->route = $route;
     $request->mergeParams();
 
-    $this->invokeAction($context);
-  }
+    // Не лучшее место для доавляения этих функций, но пока так
+    // В идеале все это должно перемести в отдельный middleware для роутера
+    $context->urlToRoute = function ($name, $params = []) {
+      $url = $this->router->urlToRoute($name, $params);
+      if ($this->env->uriRoot) {
+        $url = "/" . $this->env->uriRoot . $url;
+      }
+      return $url;
+    };
 
-  public function invokeAction(Context $context) {
-    $controller = "pd\\controllers\\" . $context->route->controller . "Controller";
-    $controller = new $controller();
+    $context->urlToAsset = function ($name) {
+      $url = "/assets/$name";
+      if ($this->env->uriRoot) {
+        $url = "/" . $this->env->uriRoot . $url;
+      }
+      return $url;
+    };
 
-    $action = $context->route->action;
-    $controller->$action($context->request);
+
+    $injection = new Injection($context);
+
+    $pipeline = array_reduce(
+      $this->middleware, 
+      
+      function ($next, $middlware) {
+        return function ($context) use ($next, $middlware) {
+          return $middlware->invoke($context, $next);
+        };
+      },
+      
+      function($context) use ($injection) {
+        return $injection->invokeRouteAction($context->route);    
+      }
+
+    );
+
+    $response = $pipeline($context);
+
+    if (!$response) {
+      return;
+    }
+
+    $response->send($context);
   }
 
   public function handleError(int $errno , string $errst, string $errfile, int $errline, array $errcontext) {
