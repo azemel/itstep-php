@@ -11,6 +11,9 @@
       <label class="form__label" for="<?=$key?>"><?=$name?></label>
 
       <?php if ($type === "file") { ?>
+        <?php if ($value) {?>
+          <div>Сейчас: <?=$value?></div>
+        <?php }?>
         <input class="filepicker" type="file" name="<?=$key?>" id="<?=$key?>"/>
       <?php } else {?>
         <input class="textbox" type="text" name="<?=$key?>" value="<?=$value ?? ""?>" id="<?=$key?>"/>
@@ -34,7 +37,7 @@
   displayField("Автор", "book.author", $model->author, @$errors["author"]);
   displayField("Год издания", "book.year", $model->year, @$errors["year"]);
   displayField("ISBN", "book.isbn", $model->isbn, @$errors["isbn"]);
-  displayField("Обложка", "book.cover", null, @$errors["cover"], "file");
+  displayField("Обложка", "book.cover", $model->cover, @$errors["cover"], "file");
   ?>
 
   <div class="form__field">

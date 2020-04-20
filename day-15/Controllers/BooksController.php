@@ -46,6 +46,7 @@ class BooksController {
     $book->author = $row["Book_Author"];
     $book->isbn = $row["Book_ISBN"];
     $book->year = $row["Book_Year"];
+    $book->cover = $row["Book_Cover"];
   
     return $book;
   }

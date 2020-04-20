@@ -6,7 +6,7 @@
 
   <div class="book__cover-col">
     <?php if ($model->cover) {?>
-      <img class="book__cover" src="<?=$model->cover?>"/>
+      <img class="book__cover" src="/content/<?=$model->cover?>"/>
     <?php } else {?>
       <div class="book__cover book__cover_placeholder">Нет обложки</div>
     <?php }?>

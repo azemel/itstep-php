@@ -34,6 +34,6 @@ $router->post("book.editor.save", "/books/{book.id}/edit", "Books", "save");
 
 $app->useRouter($router);
 
-$app->useMiddleware(new Validation());
+// $app->useMiddleware(new Validation());
 
 $app->run();
