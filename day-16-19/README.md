@@ -2,7 +2,7 @@
 
 ## :house: Домашнее задание
 
-// TBD
+См. day-16-19
 
 ## :tv: Запись онлайн-занятия
 [За 16 день](https://zoom.us/rec/share/2PZKCODyx1tLepWS8x-OWpMaItn3X6a8gSUc-6FYyx0-volj8eav64g84qQCiX1n?startTime=1586784169000)
